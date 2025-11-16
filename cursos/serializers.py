@@ -19,6 +19,11 @@ class AvaliacaoSerializer(serializers.ModelSerializer):
             'criacao',
             'ativo'
         ]
+    
+    def validate_avaliacao(self, attrs):
+        if attrs in range(1, 11):
+            return True
+        raise serializers.ValidationError('A avaliação deve ser um inteiro entre 1 e 10')
 
 
 class CursoSerializer(serializers.ModelSerializer):
